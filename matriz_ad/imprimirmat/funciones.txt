@@ -1,0 +1,64 @@
+void mostrar_mat(mat a){
+	for(int i=0;i<a.t;i++) { 
+		for(int j=0;j<a.t;j++) { 
+			cout<<a.m[i][j];
+		}
+		cout<<endl;
+	}
+}
+void cant_arcos(mat a){
+	int cont=0;
+	for(int i=0;i<a.t;i++) { 
+		for(int j=0;j<a.t;j++) { 
+			if(a.m[i][j]==1){
+				cont++;
+			}
+		}
+		
+	}
+	cout<<"el grafo tiene "<<cont<<" arcos";
+}
+void nodos_adyacente(mat a,int id){
+	for(int i=0;i<a.t;i++) { 
+		if(a.m[id][i]==1){
+			cout<<id<<" es adyacente con "<<i<<endl;
+		}
+	}
+	for(int i=0;i<a.t;i++) { 
+		if(a.m[i][id]==1 && id!=i){
+			cout<<id<<" es adyacente con "<<i<<endl;
+		}
+	}
+}
+void conjunto_der(mat a,int id){
+	for(int i=0;i<a.t;i++) { 
+		if(a.m[id][i]==1){
+			cout<<i<<" es parte del conjunto derecho de "<<id<<endl;
+		}
+		
+	}
+}
+void conjunto_izq(mat a,int id){
+	for(int i=0;i<a.t;i++) { 
+		if(a.m[i][id]==1){
+			cout<<i<<" es parte del conjunto izquierdo de "<<id<<endl;
+		}
+		
+	}
+}
+
+void conjunto_maximal(mat a){
+	int cont=0;
+	for(int i=0;i<a.t;i++) { 
+		for(int j=0;j<a.t;j++) { 
+			if(a.m[i][j]==1){
+				cont++;
+			}
+		}
+		if(cont==0){
+			cout<<i<<" pertenece al conjunto maxilmal"<<endl;
+		}
+		cont=0;
+		
+	}
+}

@@ -1,0 +1,35 @@
+void grafo_agregar_arco(nodo_grafo*listan,int id_arco,int id_nodo_origen,int id_nodo_destino){
+	nodo_grafo*nodo_origen=listan;
+	nodo_grafo*nodo_destino=listan;
+	while(nodo_origen!=NULL&&nodo_origen->id!=id_nodo_origen){
+		nodo_origen=nodo_origen->link;
+	}
+	while(nodo_destino!=NULL&&nodo_destino->id!=id_nodo_destino){
+		nodo_destino=nodo_destino->link;
+	}
+	if(nodo_origen==NULL || nodo_destino==NULL){
+		cout<<"error";
+		return;
+	}
+	nodo_arco *aux=new(nodo_arco);
+	aux->id_arco=id_arco;
+	aux->destino=nodo_destino;
+	aux->link=nodo_origen->lista_arc;
+	nodo_origen->lista_arc=aux;
+}
+
+void grafo_agregar_nodo(nodo_grafo*& listan,int id_nodo){
+	nodo_grafo *aux=listan;
+	while(aux!=NULL){
+		if(aux->id==id_nodo){
+			cout<<"error";
+			return;
+		}
+		aux=aux->link;
+	}
+	aux=new(nodo_grafo);
+	aux->id=id_nodo;
+	aux->link=listan;
+	listan=aux;
+		
+	}

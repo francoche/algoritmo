@@ -1,0 +1,72 @@
+void es_arbol(nodo_grafo*grafo){
+	nodo_grafo *aux=grafo; nodo_arco *auxarco=NULL; int cont=0; nodo_grafo *raiz=grafo; nodo_grafo *aux_id=NULL;
+	nodo_grafo *aux2=grafo;
+	while(aux!=NULL){
+		auxarco=aux->lista_arc;
+		while(auxarco!=NULL){
+			if(auxarco->destino==aux){
+				cout<<"no es arbol 1";
+				return;
+			}
+			auxarco=auxarco->link;
+		}
+		aux=aux->link;
+	}
+	
+	aux=grafo; auxarco=NULL;
+	
+	while(aux!=NULL){
+		auxarco=aux->lista_arc;
+		while(auxarco!=NULL){
+			auxarco=auxarco->link;
+			cont++;
+		}
+		if(cont>2){
+			cout<<"no es arbol 2";
+			return;
+		}
+		cont=0;
+		aux=aux->link;
+	}
+	
+	aux=grafo; auxarco=NULL;
+	
+	while(aux!=NULL){
+		auxarco=aux->lista_arc;
+		while(auxarco!=NULL){
+			if(auxarco->destino==raiz){
+				cout<<"no es arbol 3";
+				return;
+			}
+			auxarco=auxarco->link;
+			
+		}
+		aux=aux->link;
+	}
+	
+	aux=grafo; auxarco=NULL;
+	cont=0;
+	aux2=aux;
+	while(aux2!=NULL){
+		while(aux!=NULL){
+			auxarco=aux->lista_arc;
+			while(auxarco!=NULL){
+				if(auxarco->destino==aux2){
+					cont++;
+				}
+				auxarco=auxarco->link;
+			}
+			if(cont>1){
+				cout<<"no es arbol 4";
+				return;
+			}
+			aux=aux->link;
+		}
+		cont=0;
+		aux=grafo;
+		aux2=aux2->link;
+	}
+		
+	cout<<"es arbol";	
+	
+}

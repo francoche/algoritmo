@@ -1,0 +1,200 @@
+#include <iostream>
+using namespace std;
+struct grafo{
+	int mat[6][6]={0};
+	int vec[6]={0};
+	int t=6;	
+};
+int carco(grafo a){
+	int cont=0;
+	for(int i=0;i<a.t;i++){
+		for(int j=0;j<a.t;j++){
+		if(a.mat[i][j]==1){
+			cont++;
+		}
+		}
+	}
+	cout<<"la cartidad de arcos es "<<cont;	
+    return cont;
+	}
+	
+	void adyacentes(grafo a,int id ){
+		for(int i=0;i<a.t;i++){
+			if(a.mat[id][i]==1 ){
+				cout<<i<<" es adyacente";
+			}
+		}
+		for(int i=0;i<a.t;i++){
+			if(a.mat[i][id]==1){
+				cout<<i<<" es adyacente";
+			}
+		}
+	}
+		
+	void right(grafo a,int id){
+		int cont=0;
+		for(int i=0;i<a.t;i++){
+			if(a.mat[id][i]==1 ){
+				cout<<i<<" parte del conjutno derecho de "<<id;
+				cont++;
+			}
+		}
+		if(cont==0){
+			cout<<"no tiene conjunto derecho";
+			cont=0;
+		}
+	}
+		void left(grafo a,int id){
+			int cont=0;
+			for(int i=0;i<a.t;i++){
+				if(a.mat[i][id]==1 ){
+					cout<<i<<" parte del conjutno izquierdo de "<<id;
+				}
+			}
+			if(cont==0){
+				cout<<"no tiene conjunto izquierdo";
+				cont=0;
+			}
+		}
+	void maximal(grafo a){
+		int cont,cont2=0;
+		for(int i=0;i<a.t;i++){
+			cont=0;
+		for(int j=0;j<a.t;j++){
+			if(a.mat[i][j]==1){
+				cont++;
+			}
+		}
+		if(cont==0){
+			cont2++;
+		
+		}
+		
+		
+	}
+	if(cont2>1){
+			for(int i=0;i<a.t;i++){
+				cont=0;
+				for(int j=0;j<a.t;j++){
+					if(a.mat[i][j]==1){
+						cont++;
+					}
+				}
+				if(cont==0){
+					cout<<i<<" ";
+					
+				}	
+		}
+	}
+	else{
+		cout<<"no tiene maximal tiene maximo";
+	}
+	}
+	
+	void minimal(grafo a){
+		int cont,cont2=0;
+		for(int i=0;i<a.t;i++){
+			cont=0;
+			for(int j=0;j<a.t;j++){
+				if(a.mat[j][i]==1){
+					cont++;
+				}
+			}
+			if(cont==0){
+				cont2++;
+				
+			}
+			
+			
+		}
+		if(cont2>1){
+			for(int i=0;i<a.t;i++){
+				cont=0;
+				for(int j=0;j<a.t;j++){
+					if(a.mat[j][i]==1){
+						cont++;
+					}
+				}
+				if(cont==0){
+					cout<<i<<" ";
+					
+				}	
+			}
+		}
+		else{
+			cout<<"no tiene minimal tiene minimo";
+		}
+	}
+		
+		void maximo(grafo a){
+			int cont,cont2=0,aux;
+			for(int i=0;i<a.t;i++){
+				cont=0;
+				for(int j=0;j<a.t;j++){
+					if(a.mat[i][j]==1){
+						cont++;
+					}
+				}
+				if(cont==0){
+					cont2++;
+					aux=i;
+					
+				}
+				
+				
+			}
+			if(cont2>1){
+				cout<<"no tiene maximo tiene maximal";
+			}
+			else{
+				cout<<"el maximo es "<<aux;
+			}
+		}
+	
+	void minimo(grafo a){
+		int cont,cont2=0,aux;
+		for(int i=0;i<a.t;i++){
+			cont=0;
+			for(int j=0;j<a.t;j++){
+				if(a.mat[j][i]==1){
+					cont++;
+				}
+			}
+			if(cont==0){
+				cont2++;
+				aux=i;
+				
+			}
+			
+			
+		}
+		if(cont2>1){
+			cout<<"no tiene minimo tiene minimal";
+		}
+		else{
+			cout<<"el minimo es "<<aux;
+		}
+	}
+
+int main(int argc, char *argv[]) {
+	grafo a;
+	a.mat[1][2]=1;
+	a.mat[1][3]=1;
+	a.mat[3][0]=1;
+	a.mat[3][2]=1;
+	a.mat[3][3]=1;
+	a.mat[3][4]=1;
+	a.mat[4][5]=1;
+	for(int i=0;i<a.t;i++){
+		for(int j=0;j<a.t;j++){
+			cout<<a.mat[i][j];	
+		}
+		cout<<endl;
+		
+	}
+	minimo(a);
+	
+	
+	return 0;
+}
+

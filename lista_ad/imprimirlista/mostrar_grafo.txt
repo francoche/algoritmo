@@ -1,0 +1,39 @@
+void mostrar_grafo(nodo_grafo*grafo){//muestra grafo complreto
+nodo_grafo *auxgrafo=grafo;nodo_arco *auxarco=NULL;
+while(auxgrafo!=NULL){
+	cout<<"Nodo "<<auxgrafo->id<<endl;
+	auxarco=auxgrafo->lista_arc;
+	while(auxarco!=NULL){
+		cout<<" "<<"Arco "<<auxarco->id_arco<<" -> Nodo "<<auxarco->destino->id<<endl;
+		auxarco=auxarco->link;
+	}
+	auxgrafo=auxgrafo->link;
+}
+}
+
+void mostrar_arcos(nodo_grafo *a,int id_nodo){//muestra los arcos de un nodo pasodo por parametro
+	nodo_grafo*aux=a;
+	while(aux!=NULL){
+		if(aux->id==id_nodo){
+			cout<<"existe el nodo";
+			nodo_arco *auxarco=aux->lista_arc;
+			while(auxarco!=NULL){
+				cout<<auxarco->id_arco<<" ";
+				auxarco=auxarco->link;
+			}
+			return;
+		}
+		aux=aux->link;
+	}
+	if(aux==NULL){
+		cout<<"no se encontro el nodo";
+	}
+}
+
+void mostrar_nodos(nodo_grafo*a){//muestra todo los nodos de un grafo
+		nodo_grafo*aux=a;
+		while(aux!=NULL){
+			cout<<aux->id<<endl;
+			aux=aux->link;
+		}
+	}

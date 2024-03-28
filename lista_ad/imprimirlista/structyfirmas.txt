@@ -1,0 +1,51 @@
+struct nodo_arco{
+	int id_arco;
+	struct nodo_grafo * destino;
+	nodo_arco * link;
+};
+typedef struct nodo_arco NArco;
+
+
+struct nodo_grafo{
+	int id;
+	nodo_arco*lista_arc=NULL;
+	nodo_grafo *link;
+};
+typedef struct nodo_grafo NGrafo;
+
+void grafo_agregar_nodo(nodo_grafo*& listan,int id_nodo); //agrga un nodo
+void grafo_agregar_arco(nodo_grafo*a,int id_arco,int id_nodo_origen,int id_nodo_destino);// agreega un arco
+void mostrar_nodos(nodo_grafo*a);
+void mostrar_arcos(nodo_grafo *a,int id_nodo);
+void borrar_arco(int id_origen,int id_destino,nodo_grafo*&grafo);
+void mostrar_grafo(nodo_grafo*grafo);//muestra el gragfo
+void rigth_baja(nodo_grafo*&grafo);//borra el conjunto derecho de un nodo
+bool borrar_arco_primero(nodo_arco*&lista_arc,nodo_grafo*dir);//borra el primer arco con la dir pasada como paramtro;
+void left_baja(nodo_grafo*grafo,int id_grafo);//borra el conjunto izquierdo de un nodo;
+void borrar_nodo(nodo_grafo*&grafo,int id_nodo);//borra un nodo;
+
+int main(int argc, char *argv[]) {
+	nodo_grafo * a =NULL;
+	grafo_agregar_nodo(a,121);
+	grafo_agregar_nodo(a,8);
+	grafo_agregar_nodo(a,4);
+	grafo_agregar_nodo(a,32);
+	grafo_agregar_nodo(a,87);
+	grafo_agregar_arco(a,73,121,8);
+	grafo_agregar_arco(a,85,121,87);
+	grafo_agregar_arco(a,27,121,32);
+	grafo_agregar_arco(a,7,4,121);
+	grafo_agregar_arco(a,10,4,121);
+	grafo_agregar_arco(a,5,8,4);
+	grafo_agregar_arco(a,81,87,4);
+	//mostrar_nodos(a);
+	//mostrar_arcos(a,87);
+	mostrar_grafo(a);
+	cout<<"////////////////////////////////////////////////////////"<<endl;
+	borrar_nodo(a,121);
+	cout<<"////////////////////////////////////////////////////////"<<endl;
+	mostrar_grafo(a);
+	
+	
+	return 0;
+}
